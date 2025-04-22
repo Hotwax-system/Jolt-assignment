@@ -1,0 +1,25 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "items": {
+        "*": {
+          "prices": {
+            "*": {
+              "value": "@(3,id).@(1,currency)"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": {
+        "USD": "&1_&",
+        "EUR": "&1_&"
+      }
+    }
+  }
+]
