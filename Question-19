@@ -4,10 +4,30 @@
     "spec": {
       "products": {
         "*": {
-          "price": "=doubleSum(@(1,price), @(1,price))"
+          "doublePrice": "=doubleSum(@(1,price),@(1,price))"
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "products": {
+        "*": {
+          "id": {
+            "1001": {
+              "@(2,id)": "products[#4].id",
+              "@(2,name)": "products[#4].name",
+              "@(2,price)": "products[#4].price"
+            },
+            "*": {
+              "@(2,id)": "products[#4].id",
+              "@(2,name)": "products[#4].name",
+              "@(2,doublePrice)": "products[#4].price"
+            }
+          }
         }
       }
     }
   }
 ]
-    
