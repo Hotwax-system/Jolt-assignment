@@ -1,0 +1,60 @@
+[
+
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "orders": {
+        "*": {
+          "customer": {
+            "fullName": "=join(' ',@(1,firstName),@(1,lastName))",
+            "address": {
+              "address": "=join(' ',@(1,street),@(1,city),@(1,state),@(1,zip))"
+            }
+          },
+          "items": {
+            "*": {
+              "Quantity": "=divide(1,@(1,quantity))",
+              "totalPrice": "=divideAndRound(1,@(1,price),@(1,Quantity))"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "orders": {
+        "*": {
+          "orderId": "orders[#2].&",
+          "orderDate": "orders[#2].&",
+          "customer": {
+            "customerId": "orders[#3].customer.&",
+            "fullName": "orders[#3].customer.&",
+            "email": "orders[#3].customer.&",
+            "address": "orders[#3].customer.&"
+          },
+          "items": {
+            "*": {
+              "itemId": "orders[#4].items[#2].&",
+              "name": "orders[#4].items[#2].&",
+              "quantity": "orders[#4].items[#2].&",
+              "price": "orders[#4].items[#2].&",
+              "totalPrice": "orders[#4].total"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "orders": {
+        "*": {
+          "total": "=doubleSum(@(1,total))"
+        }
+      }
+    }
+  }
+]

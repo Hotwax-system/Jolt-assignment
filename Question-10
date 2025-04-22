@@ -1,0 +1,19 @@
+[
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "splitName": "=split(' ',@(1,name))",
+      "firstName": "@(1,splitName[0])",
+      "lastName": "@(1,splitName[1])",
+      "phone_number_count": "=size(1,@(1,phone_numbers))"
+    }
+  },
+  {
+    "operation": "remove",
+    "spec": {
+      "name": "",
+      "splitName": ""
+    }
+  }
+
+]

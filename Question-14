@@ -1,0 +1,26 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "employees": {
+        "*": {
+          "id": "employees[#2].&",
+          "name": "employees[#2].&",
+          "department": "employees[#2].&",
+          "phone": {
+            "*": {
+              "type": {
+                "home": {
+                  "@(2,number)": "employees[#6].homePhone"
+                },
+                "work": {
+                  "@(2,number)": "employees[#6].workPhone"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

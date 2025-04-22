@@ -1,0 +1,13 @@
+[
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "products": {
+        "*": {
+          "price": "=doubleSum(@(1,price), @(1,price))"
+        }
+      }
+    }
+  }
+]
+    
